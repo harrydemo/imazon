@@ -5,6 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+import ca.imazon.common.pojo.EasyUiDataGridResult;
 import ca.imazon.mapper.TbItemMapper;
 import ca.imazon.pojo.TbItem;
 import ca.imazon.pojo.TbItemExample;
@@ -36,4 +40,19 @@ public class ItemServiceImpl implements ItemService {
 
 	}
 
+	@Override
+	public EasyUiDataGridResult getItemList(int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		TbItemExample example = new TbItemExample();
+		List<TbItem> list = itemMapper.selectByExample(example);
+		
+		PageInfo<TbItem> pageInfo = new PageInfo<>(list);
+		
+		EasyUiDataGridResult result = new EasyUiDataGridResult();
+		result.setTotal(pageInfo.getTotal());
+		result.setRows(list);
+		return result;
+	}
+
+	
 }

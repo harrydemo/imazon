@@ -6,11 +6,12 @@
         	<th data-options="field:'ck',checkbox:true"></th>
         	<th data-options="field:'id',width:60">Inventory ID</th>
             <th data-options="field:'title',width:200">Name</th>
-            <th data-options="field:'cid',width:100">Category</th>
             <th data-options="field:'sellPoint',width:100">Promotion</th>
             <th data-options="field:'price',width:70,align:'right',formatter:TAOTAO.formatPrice">Price</th>
             <th data-options="field:'num',width:70,align:'right'">Quantity</th>
             <th data-options="field:'barcode',width:100">Barcode</th>
+            <th data-options="field:'image',width:100">Category</th>
+                        <th data-options="field:'cid',width:100">Category</th>
             <th data-options="field:'status',width:60,align:'center',formatter:TAOTAO.formatItemStatus">Status</th>
             <th data-options="field:'created',width:130,align:'center',formatter:TAOTAO.formatDateTime">Created</th>
             <th data-options="field:'updated',width:130,align:'center',formatter:TAOTAO.formatDateTime">Updated</th>

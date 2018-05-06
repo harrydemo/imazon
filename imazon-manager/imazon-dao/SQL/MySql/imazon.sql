@@ -90,16 +90,18 @@ INSERT INTO `tb_item` VALUES ('1', 'Motorola Nexus 6', '32/64 GB, 3 GB RAM', '69
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_item_cat`;
 CREATE TABLE `tb_item_cat` (
-  `id` bigint(10) NOT NULL,
-  `parent_id` bigint(10) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `status` tinyint(4) NOT NULL,
-  `sort_order` int(10) DEFAULT NULL,
-  `is_parent` bit(1) DEFAULT NULL,
-  `created` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `updated` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `parent_id` bigint(20) DEFAULT NULL,
+  `name` varchar(500) DEFAULT NULL,
+  `status` int(1) DEFAULT '1',
+  `sort_order` int(4) DEFAULT NULL,
+  `is_parent` tinyint(1) DEFAULT '1',
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `parent_id`(`parent_id`,`status`) USING BTREE,
+  KEY `sort_order` (`sort_order`)
+) ENGINE=InnoDB AUTO_INCREMENT=1183 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_item_cat
