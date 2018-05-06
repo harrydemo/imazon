@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ca.imazon.common.pojo.EasyUiDataGridResult;
@@ -25,8 +26,8 @@ public class ItemController {
 	
 	@RequestMapping("/item/list")
 	@ResponseBody
-	public EasyUiDataGridResult getItemList(Integer page, Integer rows) {
-		EasyUiDataGridResult result = itemService.getItemList(page, rows);
+	public EasyUiDataGridResult getItemList(@RequestParam("page") Integer pageNum, @RequestParam("rows") Integer pageSize) {
+		EasyUiDataGridResult result = itemService.getItemList(pageNum, pageSize);
 		return result;
 	}
 }
